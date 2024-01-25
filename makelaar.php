@@ -1,11 +1,20 @@
 <?php
 
      include_once("functions.php");
+     include_once("session.php");
 
-     session_start();
      $ridSession = $_SESSION["ID"];
      $rolSession = $_SESSION["Rol"];
      
+     if ($rolSession != 3)
+     {    header("Location: http://localhost/ultima%20casa/admin.php");
+          exit();
+     } 
+     else if ($rolSession == 4) {
+          header("Location: http://localhost/ultima%20casa/admin.php");
+          exit();
+     }
+
      $db = ConnectDB();
      
      $relatieid = $ridSession;

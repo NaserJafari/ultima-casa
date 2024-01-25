@@ -3,16 +3,22 @@
      include_once("functions.php");
      include_once("session.php");
 
-     if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
-          header("Location: http://localhost/h+sports/index.php");
+     $idSession = $_SESSION["ID"];
+     $rolSession = $_SESSION["Rol"];
+
+     if ($rolSession != 4)
+     {    header("Location: http://localhost/ultima%20casa/makelaar.php");
+          exit();
+     } 
+     else if ($rolSession == 3) {
+          header("Location: http://localhost/ultima%20casa/makelaar.php");
           exit();
      }
       
 
      $db = ConnectDB();
 
-     $idSession = $_SESSION["ID"];
-     $rolSession = $_SESSION["Rol"];
+    
 
      $sql = "   SELECT ID, 
                        Naam, 
