@@ -86,7 +86,7 @@ function InlogKop($relatieid, $titel, $extracel = "")
                    '</td>
                     <td>                                                                             
                          <button class="action-button button-column">
-                              <a href="index.php">Uitloggen</a>
+                              <a href="uitloggen.php">Uitloggen</a>
                          </button>
                     </td>' .
                     $extracel .

@@ -11,7 +11,7 @@
           exit();
      } 
      else if ($rolSession == 3) {
-          header("Location: http://localhost/ultima%20casa/makelaar.php");
+          header("Location: http://localhost/ultima%20casa/admin.php");
           exit();
      }
       
