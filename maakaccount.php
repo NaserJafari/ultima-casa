@@ -34,19 +34,26 @@
                                         <div class="form-group">
                                              <label for="Email">E-mailadres:</label>
                                              <input type="email" class="form-control" id="Email" name="Email" placeholder="E-mailadres" required
-                                             pattern="' . $emailpattern . '">
+                                             pattern="' . $emailpattern . '"
+                                             title="Er moet een @ in je email staan!">
                                         </div>
                                         <div class="form-group">
                                              <label for="Wachtwoord">Wachtwoord:</label>
-                                             <input type="password" class="form-control" id="Wachtwoord" name="Wachtwoord" placeholder="Wachtwoord" required
-                                             pattern="' . $wachtwoordpattern . '">
-                                             <p class="">Je wachtwoord moet minimaal 8 tekens lang zijn, 1 hoofdletter, 1 kleine letter en tenminste 1 cijfer!</p>
+                                             <input type="password" class="form-control" id="Wachtwoord" name="Wachtwoord" placeholder="Wachtwoord"
+                                             pattern="' . $wachtwoordpattern . '"
+                                             title="Het wachtwoord moet minimaal 8 tekens lang zijn, 1 hoofdletter, 1 kleine letter en tenminste 1 cijfer!" required>
                                         </div>
                                         <div class="form-group">
                                              <label for="Telefoon">Mobiel telefoonnummer:</label>
                                              <input type="tel" class="form-control" id="Telefoon" name="Telefoon" 
                                                     placeholder="Telefoonnummer" 
-                                                    pattern="' . $telefoonpattern . '" required>
+                                                    pattern="' . $telefoonpattern . '"
+                                                    title="Telefoonnummer moet alleen cijfers gebruiken, geen +31, gewoon 06 en de rest van je nummer!  Het moet ook 10 karakters lang zijn!" required>
+                                        </div>
+                                        <div class="form-group">
+                                             <label for="toestemming">Toestemming gebruik persoonlijke gegevens!</label>
+                                             <input type="checkbox" id="toestemming" name="toestemming" value="toestemming"
+                                             title="Vink deze box aan om toestemming te geven voor het gebruik van persoonlijke gegevens" required>
                                         </div>
                                         <div class="form-group"><br><br>
                                              <button type="submit" class="action-button" title="Uw account aanmaken">Maak account</button>
