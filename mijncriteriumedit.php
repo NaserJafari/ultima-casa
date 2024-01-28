@@ -1,11 +1,12 @@
 <?php
 
      include_once("functions.php");
-     
+     include_once("session.php");
+
      $db = ConnectDB();
      
      $ID = $_POST["edit"];
-     $relatieid = $_POST["RID"];
+     $ridSession = $_SESSION["ID"];
      
      $sql = "SELECT mijncriteria.ID as CID, Criterium, Van, Tem, Type
                FROM mijncriteria
@@ -30,7 +31,7 @@
                <div class="container">
                     <div class="col-sm-5 col-md-7 col-lg-5 col-sm-offset-4 col-md-offset-3 col-lg-offset-4">
                          <h3>Mijn Ultima Casa zoekcriterium</h3>
-                         <form action="mijncriteriumupd.php" method="GET">';
+                         <form action="mijncriteriumupd.php" method="POST">';
      if ($gegevens["Type"] == 1)
      { // Van - T/m
           echo               '<h3>' . $gegevens["Criterium"] . '</h3>
@@ -65,8 +66,8 @@
                                    <button type="submit" class="action-button" id="upd" name="upd" 
                                            value="' . $ID . '" title="Dit criterium aanpassen.">Wijzigen
                                    </button>
-                                   <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
-                                   <button class="action-button"><a href="relatie.php?RID=' . $relatieid . '" >Annuleren</a>
+                                   <input type="hidden" value="' . $ridSession . '" id="RID" name="RID">
+                                   <button class="action-button"><a href="relatie.php" >Annuleren</a>
                                    </button>
                               </div>
                          </form>

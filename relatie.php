@@ -5,6 +5,11 @@
      $ridSession = $_SESSION["ID"];
      $rolSession = $_SESSION["Rol"];
      
+     $activeTab = isset($_GET['tab']) ? $_GET['tab'] : 'kopen';
+
+     $_SESSION['active_tab'] = $activeTab;
+
+
      $filtered = 0;
      $filter = "relaties.ID = " . $ridSession . " AND (StatusCode < 100)";
      $datum = "";
@@ -119,11 +124,20 @@
                                                </button>
                                           </td>') .
                    '<ul class="nav nav-tabs">
-                         <li><a data-toggle="tab" href="#kopen">Huizen die ik wil kopen</a></li>
-                         <li><a data-toggle="tab" href="#mijncriteria">Zoekcriteria</a></li>
-                         <li><a data-toggle="tab" href="#verkopen">Huizen die ik te koop aanbied</a></li>
-                         <li><a data-toggle="tab" href="#account">Account</a></li>
-                    </ul>
+                   <li' . ((!isset($_SESSION['active_tab']) || $_SESSION['active_tab'] == 'kopen') ? ' class="active"' : '') . '>
+                       <a href="#kopen" data-toggle="tab">Huizen die ik wil kopen</a>
+                   </li>
+                   <li' . ((isset($_SESSION['active_tab']) && $_SESSION['active_tab'] == 'mijncriteria') ? ' class="active"' : '') . '>
+                       <a href="#mijncriteria" data-toggle="tab">Zoekcriteria</a>
+                   </li>
+                   <li' . ((isset($_SESSION['active_tab']) && $_SESSION['active_tab'] == 'verkopen') ? ' class="active"' : '') . '>
+                       <a href="#verkopen" data-toggle="tab">Huizen die ik te koop aanbied</a>
+                   </li>
+                   <li' . ((isset($_SESSION['active_tab']) && $_SESSION['active_tab'] == 'account') ? ' class="active"' : '') . '>
+                       <a href="#account" data-toggle="tab">Account</a>
+                   </li>
+               </ul>
+               
                     
                     <div class="tab-content">
                          <div id="kopen" class="tab-pane fade in active">
@@ -234,7 +248,7 @@
                                         <th>Hoogste bod</th>
                                         <th>Status</th>
                                         <th class="button-column" colspan="2">
-                                             <form action="verkoopplus.php">                             
+                                             <form action="verkoopplus.php" method="POST">                             
                                                   <button type="submit" class="action-button" id="RID" name="RID" 
                                                           value="' . $ridSession . '" title="Een nieuw huis in de verkoop doen.">&nbsp;+&nbsp;</button>
                                              </form>
@@ -248,7 +262,7 @@
                                         <td>' . $verkoop['HoogsteBod'] . '</td>
                                         <td>' . $verkoop['Status'] . '</td>
                                         <td class="button-column">
-                                             <form action="verkoopedit.php">     
+                                             <form action="verkoopedit.php" method="POST">     
                                                   <button type="submit" class="action-button" id="HID" name="HID" 
                                                           value="' . $verkoop['HID'] . '" title="Deze verkoop wijzigen.">...</button>
                                                   <input type="hidden" value="' . $ridSession . '" id="RID" name="RID">       
@@ -274,7 +288,7 @@
                                         <th>Criterium</th>
                                         <th>Waarde</th>
                                         <th class="button-column" colspan="2">
-                                             <form action="mijncriteriumplus.php">                             
+                                             <form action="mijncriteriumplus.php" method="POST">                             
                                                   <button type="submit" class="action-button" id="RID" name="RID" 
                                                           value="' . $ridSession . '" title="Een nieuw criterium toevoegen.">&nbsp;+&nbsp;</button>
                                              </form>
@@ -285,7 +299,7 @@
                                         <td>' . $criterium['Criterium'] . '</td>
                                         <td>' . $criterium['Waarde'] . '</td>
                                         <td class="button-column">                                        
-                                             <form action="mijncriteriumedit.php">                             
+                                             <form action="mijncriteriumedit.php" method="POST">                             
                                                   <button type="submit" class="action-button" id="edit" name="edit" 
                                                           value="' . $criterium['CID'] . '" title="Dit criterium wijzigen.">...</button>
                                                   <input type="hidden" value="' . $ridSession . '" id="RID" name="RID">

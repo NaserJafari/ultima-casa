@@ -1,10 +1,11 @@
 <?php
      include_once("functions.php");
-     
+     include_once("session.php");
+
      $db = ConnectDB();
      
      $huizenid = $_POST['HID'];
-     $relatieid = $_POST['RID'];
+     $ridSession = $_SESSION["ID"];
      
      $sql = "SELECT ID as AID, StartDatum, FKrelatiesID, Straat, Postcode, Plaats
                FROM huizen
@@ -42,7 +43,7 @@
           <body>
                <div class="container">
                     <h3 class="cell-center bbottom">Huis te koop wijzigen</h3>
-                    <form action="verkoopupd.php" method="GET">
+                    <form action="verkoopupd.php" method="POST">
                          <input type="hidden" value="' . $huis["AID"] . '" id="AID" name="AID">
                          <input type="hidden" value="' . $huizenid . '" id="HID" name="HID">
                          <div class="row">
@@ -93,10 +94,10 @@ echo               '          </div>
                          <div class="row text-center">
                               <div class="form-group btop">
                                    <button type="submit" class="action-button" id="RID" name="RID" 
-                                           value="' . $relatieid . '" title="De gegevens van deze koop wijzigen.">Wijzigen
+                                           value="' . $ridSession . '" title="De gegevens van deze koop wijzigen.">Wijzigen
                                    </button>
                                    <button class="action-button">
-                                        <a href="relatie.php?RID=' . $relatieid . '" >Annuleren</a>
+                                        <a href="relatie.php">Annuleren</a>
                                    </button>
                               </div>
                          </div>

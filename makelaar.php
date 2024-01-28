@@ -137,7 +137,7 @@
                                                                  <td>' . $bod["Bod"] .  '</td>
                                                                  <td>' . $bod["Datum"] . '</td>
                                                                  <td>
-                                                                       <form action="bodstatusupd.php" method="GET">
+                                                                       <form action="bodstatusupd.php" method="POST">
                                                                            <div class="form-group form-inline">
                                                                                 <select class="form-control small" id="SID" name="SID">';
                     foreach ($statussen as $status) 

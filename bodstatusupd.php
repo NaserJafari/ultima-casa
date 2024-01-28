@@ -1,12 +1,13 @@
 <?php
 
      include_once("functions.php");
+     include_once("session.php");
      
      $db = ConnectDB();
      
      $biedingenid = $_POST["BID"]; 
      $statussenid = $_POST["SID"]; 
-     $relatieid = $_POST["RID"]; 
+     $ridSession = $_SESSION["ID"]; 
      $datum = "'" . FormatDatum() . "'";
 
      echo 
@@ -39,7 +40,7 @@
     
      echo               '<br><br>
                          <button class="action-button">
-                              <a href="makelaar.php?RID=' . $relatieid . '" >Ok</a>
+                              <a href="makelaar.php" >Ok</a>
                          </button>
                     </div>
                </div>

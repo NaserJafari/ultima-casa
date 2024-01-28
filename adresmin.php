@@ -53,7 +53,7 @@
                                                 value="' . $ID . '" title="Dit adres verwijderen.">Adres verwijderen
                                         </button>
                                         <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
-                                        <button class="action-button"><a href="beheer.php?RID=' . $relatieid . '" >Annuleren</a>
+                                        <button class="action-button"><a href="beheer.php" >Annuleren</a>
                                         </button>
                                    </div>
                               </form>

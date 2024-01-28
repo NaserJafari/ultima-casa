@@ -1,9 +1,11 @@
 <?php
      include_once("functions.php");
+     include_once("session.php");
      
      $db = ConnectDB();
      
-     $relatieID = $_POST["RID"]; 
+     $ridSession = $_SESSION["ID"]; 
+
      
      $CrVanTem = "NULL";
      $Van = "NULL";
@@ -20,7 +22,7 @@
               (!empty($_POST['Tem'])))
           {    $Tem = $_POST['Tem'];
           }
-          $vals = '(' . $Van . ',' . $Tem . ',' . $relatieID . ',' . $CrVanTem . ')';
+          $vals = '(' . $Van . ',' . $Tem . ',' . $ridSession . ',' . $CrVanTem . ')';
      }
      
      $CrJaNee = "NULL";
@@ -36,7 +38,7 @@
           if ($vals != "")
           {    $vals .= ",";
           };
-          $vals .= '(' . $Van . ',' . $Tem . ',' . $relatieID . ',' . $CrJaNee . ')';
+          $vals .= '(' . $Van . ',' . $Tem . ',' . $ridSession . ',' . $CrJaNee . ')';
      }
      
      echo 
@@ -72,7 +74,7 @@
      {    echo '<p>Er zijn geen nieuwe zoekcriteria toegevoegd.</p>';
      }
      echo               '<br><br>
-                         <button class="action-button"><a href="relatie.php?RID=' . $relatieID . '" >Ok</a>
+                         <button class="action-button"><a href="relatie.php#mijncriterium" >Ok</a>
                          </button>
                     </div>
                </div>

@@ -1,9 +1,12 @@
 <?php
      include_once("functions.php");
-     
+     include_once("session.php");
+
      $db = ConnectDB();
      
-     $relatieid = $_POST['RID'];
+     $ridSession = $_SESSION["ID"];
+     $rolSession = $_SESSION["Rol"];
+
      
      $sql = "SELECT ID, Criterium, Type
                FROM criteria
@@ -34,7 +37,7 @@
           <body>
                <div class="container">
                     <h3 class="cell-center bbottom">Huis te koop aanbieden</h3>
-                    <form action="verkoopins.php" method="GET">
+                    <form action="verkoopins.php" method="POST">
                          <div class="row">
                               <div class="col-sm-4 col-md-4 col-lg-4">
                                    <div class="form-group">
@@ -78,10 +81,10 @@ echo               '          </div>
                          <div class="row text-center">
                               <div class="form-group btop">
                                    <button type="submit" class="action-button" id="RID" name="RID" 
-                                           value="' . $relatieid . '" title="Dit huis te koop aanbieden.">Toevoegen
+                                           value="' . $ridSession . '" title="Dit huis te koop aanbieden.">Toevoegen
                                    </button>
                                    <button class="action-button">
-                                        <a href="relatie.php?RID=' . $relatieid . '" >Annuleren</a>
+                                        <a href="relatie.php#verkopen" >Annuleren</a>
                                    </button>
                               </div>
                          </div>

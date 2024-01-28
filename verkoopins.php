@@ -1,10 +1,12 @@
 <?php
 
      include_once("functions.php");
-     
+     include_once("session.php");
+
      $db = ConnectDB();
      
-     $relatieid = $_POST["RID"]; 
+     $ridSession = $_SESSION["ID"];
+     $rolSession = $_SESSION["Rol"];
      $straat = "'" . trim($_POST["Straat"]) . "'";
      $postcode = "'" . strtoupper(str_replace(' ', '', $_POST["Postcode"])) . "'";
      $plaats = "'" . trim($_POST["Plaats"]) . "'";
@@ -29,7 +31,7 @@
      $datum = "'" . FormatDatum() . "'";
      $sql = "INSERT 
                INTO huizen (StartDatum, FKrelatiesID, Straat, Postcode, Plaats)
-             VALUES ($datum, $relatieid, $straat, $postcode, $plaats)"; 
+             VALUES ($datum, $ridSession, $straat, $postcode, $plaats)"; 
      $fout = $sql;   
 
      if ($db->query($sql) == true)
@@ -63,7 +65,7 @@
                    <p>' . $sql . '</p>';
      }
      echo $text .       '<br><br>
-                         <button class="action-button"><a href="relatie.php?RID=' . $relatieid . '" >Ok</a>
+                         <button class="action-button"><a href="relatie.php#verkopen">Ok</a>
                          </button>
                     </div>
                </div>

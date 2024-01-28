@@ -1,10 +1,12 @@
 <?php
 
      include_once("functions.php");
-     
+     include_once("session.php");
+
      $db = ConnectDB();
      
-     $relatieid = $_POST["RID"]; 
+     $ridSession = $_SESSION["ID"];
+     $rolSession = $_SESSION["Rol"];
      $adresid = $_POST["AID"];
      $huisid = $_POST["HID"];
      
@@ -29,7 +31,7 @@
                     <div class="col-sm-5 col-md-7 col-lg-5 col-sm-offset-4 col-md-offset-3 col-lg-offset-4">
                          <h3>Huis te koop aanbieden.</h3>';
      
-     $sql = "UPDATE adressen 
+     $sql = "UPDATE huizen 
                 SET Straat = $straat, 
                     Postcode = $postcode, 
                     Plaats = $plaats
@@ -74,7 +76,7 @@
                    <p>' . $sql . '</p>';
      }
      echo $text .       '<br><br>
-                         <button class="action-button"><a href="relatie.php?RID=' . $relatieid . '" >Ok</a>
+                         <button class="action-button"><a href="relatie.php" >Ok</a>
                          </button>
                     </div>
                </div>

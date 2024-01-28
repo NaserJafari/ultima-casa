@@ -63,7 +63,7 @@
                                            value="' . $biedingenid . '" title="Het bod op dit huis opslaan.">Opslaan
                                    </button>
                                    <input type="hidden" value="' . $bieding["RID"] . '" id="RID" name="RID">
-                                   <button class="action-button"><a href="relatie.php?RID=' . $bieding["RID"] . '" >Annuleren</a></button>
+                                   <button class="action-button"><a href="relatie.php" >Annuleren</a></button>
                               </div>
                          </form>
                     </div>

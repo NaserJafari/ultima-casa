@@ -1,17 +1,23 @@
 <?php
 
      include_once("functions.php");
-     
+     include_once("session.php");
+
      $db = ConnectDB();
      
-     $relatieid = $_POST["RID"];
+     $ridSession = $_SESSION["ID"];
+
+     if (isset($_POST['cancel'])) {
+          header("Location: relatie.php&tab=$activeTab");
+          exit();
+     }
      
      $sql = "SELECT ID, Criterium
                FROM criteria
              WHERE (Type = 1) AND
                    ID NOT IN (SELECT FKcriteriaID 
                                 FROM mijncriteria 
-                               WHERE FKrelatiesID = $relatieid)
+                               WHERE FKrelatiesID = $ridSession)
              ORDER BY Criterium";
      
      $crtsvantem = $db->query($sql)->fetchAll();
@@ -21,7 +27,7 @@
              WHERE (Type = 2) AND
                    ID NOT IN (SELECT FKcriteriaID 
                                 FROM mijncriteria 
-                               WHERE FKrelatiesID = $relatieid)
+                               WHERE FKrelatiesID = $ridSession)
              ORDER BY Criterium";
      
      $crtsjanee = $db->query($sql)->fetchAll();
@@ -44,7 +50,7 @@
                          <div class="text-center">
                               <h3>Zoekcriteria toevoegen</h3>
                          </div>
-                         <form action="mijncriteriumins.php" method="GET">
+                         <form action="mijncriteriumins.php" method="POST">
                               <div class="form-group form-inline">
                                    <select class="form-control" id="CrVanTem" name="CrVanTem">
                                         <option value="" selected>&lt;Selecteer een criterium&gt;</option>';
@@ -74,10 +80,9 @@
                               <br><br>
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="RID" name="RID" 
-                                           value="' . $relatieid . '" title="Deze criteria toevoegen.">Toevoegen
+                                           value="' . $ridSession . '" title="Deze criteria toevoegen.">Toevoegen
                                    </button>
-                                   <button class="action-button"><a href="relatie.php?RID=' . $relatieid . '" >Annuleren</a>
-                                   </button>
+                                   <button class="action-button" name="cancel" type="submit">Annuleren</button>
                               </div>
                          </form>
                     </div>
