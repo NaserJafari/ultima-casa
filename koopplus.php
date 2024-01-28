@@ -1,10 +1,12 @@
 <?php
      include_once("functions.php");
+     include_once("session.php");
      
      $db = ConnectDB();
      
-     $relatieid = $_POST['RID'];
-     
+     $ridSession = $_SESSION["ID"];
+     $rolSession = $_SESSION["Rol"];
+          
      $filter = 0;
      $filterids = "";
      
@@ -14,7 +16,7 @@
                     FROM mijncriteria 
                LEFT JOIN huiscriteria ON huiscriteria.FKcriteriaID = mijncriteria.FKcriteriaID
                LEFT JOIN criteria ON criteria.ID = mijncriteria.FKcriteriaID
-                   WHERE (mijncriteria.FKrelatiesID = $relatieid) 
+                   WHERE (mijncriteria.FKrelatiesID = $ridSession) 
                 GROUP BY huizenID
                   HAVING SUM(IF(criteria.Type < 2, 
                                 huiscriteria.Waarde BETWEEN mijncriteria.Van AND mijncriteria.Tem, 
@@ -54,7 +56,7 @@
           </head>
           <body>
                <div class="container">
-                    <form action="koopins.php">   
+                    <form action="koopins.php" method="POST">   
                          <table id="mijnkopen" class="koop">
                               <tr>
                                    <th colspan=3>
@@ -71,14 +73,14 @@
                                    <th class="button-column">
                                         <button class="action-button" disabled>';
      if ($filter > 0)
-     {    echo                              '<a href="koopplus.php?RID=' . $relatieid . '" title="Alle beschikbare huizen tonen.">&#x2610;</a>';
+     {    echo                              '<a href="koopplus.php" title="Alle beschikbare huizen tonen.">&#x2610;</a>';
      }
      else
-     {    echo                              '<a href="koopplus.php?RID=' . $relatieid . '&filter" title="Alleen geselecteerde huizen tonen.">&#x2611;</a>';
+     {    echo                              '<a href="koopplus.php&filter" title="Alleen geselecteerde huizen tonen.">&#x2611;</a>';
      }
      echo                              '</button>
                                    </th>
-                                   <th><button class="action-button"><a href="relatie.php?RID=' . $relatieid . '" >Annuleren</a></button>
+                                   <th><button class="action-button"><a href="relatie.php" >Annuleren</a></button>
                                    </th>
                               </tr>';
      if (count($kopen) > 0)
@@ -145,7 +147,7 @@
                               </tr>';
      }
 echo                    '</table>
-                         <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
+                         <input type="hidden" value="' . $ridSession . '" id="RID" name="RID">
                     </form>
                </div>
           </body>

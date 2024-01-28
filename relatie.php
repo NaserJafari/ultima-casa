@@ -93,7 +93,7 @@
      $sql = "   SELECT relaties.ID AS MID
                   FROM relaties
              LEFT JOIN rollen ON rollen.ID = relaties.FKrollenID
-                 WHERE Waarde BETWEEN 30 AND 39 
+                 WHERE Waarde BETWEEN 1 AND 15 
                  LIMIT 1"; // de eerste makelaar van Ultima Casa
      
      $makelaar = $db->query($sql)->fetch();
@@ -144,12 +144,12 @@
      }
      else
      {    echo                              '<button class="action-button" title="Filtering opheffen">
-                                                  <a href="relatie.php?RID=' . $ridSession . '" >&nbsp;&#1200;&nbsp;</a>
+                                                  <a href="relatie.php">&nbsp;&#1200;&nbsp;</a>
                                              </button>';
      }
      echo                              '</th>
                                         <th class="button-column" colspan=2>
-                                             <form action="koopplus.php">                             
+                                             <form action="koopplus.php" method="POST">                             
                                                   <button type="submit" class="action-button" id="RID" name="RID" 
                                                           value="' . $ridSession . '" title="Een nieuw huis aan mijn lijst toevoegen.">&nbsp;+&nbsp;</button>
                                              </form>
@@ -202,7 +202,7 @@
                                         <td>' . $tekoop['Datum'] . '</td>                                             
                                         <td>' . $tekoop['Status'] . '</td>
                                         <td class="button-column">
-                                             <form action="koopbod.php">                             
+                                             <form action="koopbod.php" method="POST">                             
                                                   <button type="submit" class="action-button" id="bieden" name="bieden" 
                                                           value="' . $tekoop['TKID'] . '" title="Een bod op dit huis uitbrengen.">&euro;</button>
                                              </form>
@@ -307,13 +307,13 @@
                          <div id="account" class="tab-pane fade">
                               <div class="container">
                                    <div class="col-sm-4 col-md-6 col-lg-4 col-sm-offset-4 col-md-offset-3 col-lg-offset-4">                                     
-                                        <form action="relatieupd.php" method="GET">
+                                        <form action="relatieupd.php" method="POST">
                                              <h3>Mijn account</h3>
                                              <div class="form-group">
                                                   <label for="Naam">Naam:</label>
                                                   <input type="text" class="form-control" 
                                                          id="Naam" name="Naam"
-                                                         value="' . $gegevens["Naam"] . '" placeholder="Naam" required>
+                                                         value="' . htmlspecialchars($gegevens["Naam"]) . '" placeholder="Naam" required pattern="[A-Za-z\s]+" title="Alleen letters en spaties!">
                                              </div>
                                              <div class="form-group">
                                                   <label for="Email">E-mail adres:</label>

@@ -8,6 +8,7 @@
                        StartDatum,
                        CONCAT(Straat, ', ', LEFT(Postcode, 4), ' ', RIGHT(Postcode, 2), ', ', Plaats) as Adres,
                        Status,
+                       Bod,
                        biedingen.FKrelatiesID as RID
                   FROM biedingen
              LEFT JOIN relaties ON relaties.ID = biedingen.FKrelatiesID
@@ -46,7 +47,7 @@
                               <label for="Status">Status:</label>
                               <input type="text" class="form-control" value="' . $bieding["Status"] . '" id="Status" name="Status" readonly>
                          </div>
-                         <form action="koopupd.php" method="GET">
+                         <form action="koopupd.php" method="POST">
                               <div class="form-group button-column accent">
                                    <label for="Bod">Mijn bod voor dit huis is:</label>
                                    <input type="number" class="form-control" 

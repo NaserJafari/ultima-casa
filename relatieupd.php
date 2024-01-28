@@ -1,10 +1,12 @@
 <?php
      include_once("functions.php");
+     include_once("session.php");
      
      $db = ConnectDB();
      
-     $id = $_POST["ID"]; 
-     $relatieID = $_POST["upd"]; 
+
+     $ridSession = $_SESSION["ID"];
+     $rolSession = $_SESSION["Rol"];
      
      echo 
     '<!DOCTYPE html>
@@ -35,7 +37,7 @@
           $sql .= 
                  ", Wachtwoord = '" . md5($wachtwoord) . "'";
      } 
-     $sql .= "WHERE ID = $relatieID";
+     $sql .= "WHERE ID = $rolSession";
      
      if ($db->query($sql) == true) 
      {     if (StuurMail($_POST['Email'], 
@@ -64,7 +66,7 @@
                          <p>' . $sql . '</p>';
      }
      echo               '<br><br>
-                         <button class="action-button"><a href="relatie.php?RID=' . $relatieID . '" >Ok</a>
+                         <button class="action-button"><a href="relatie.php" >Ok</a>
                          </button>
                     </div>
                </div>

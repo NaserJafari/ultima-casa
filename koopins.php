@@ -1,11 +1,12 @@
 <?php
 
      include_once("functions.php");
-     
+     include_once("session.php");
+
      $db = ConnectDB();
      
      $FKhuizenID = $_POST["plus"]; 
-     $FKrelatiesID = $_POST["RID"]; 
+     $ridSession = $_SESSION["ID"]; 
 
      echo 
     '<!DOCTYPE html>
@@ -27,7 +28,7 @@
      $sql = "   INSERT 
                   INTO biedingen 
                        (FKrelatiesID, FKhuizenID, StatusDatum)
-                VALUES ($FKrelatiesID, $FKhuizenID, $datum)";
+                VALUES ($ridSession, $FKhuizenID, $datum)";
 
      if ($db->query($sql) == true) 
      {    echo 'Het huis is toegevoegd aan je lijst.';
@@ -37,7 +38,7 @@
      }
     
      echo               '<br><br>
-                         <button class="action-button"><a href="relatie.php?RID=' . $FKrelatiesID . '" >Ok</a>
+                         <button class="action-button"><a href="relatie.php" >Ok</a>
                          </button>
                     </div>
                </div>

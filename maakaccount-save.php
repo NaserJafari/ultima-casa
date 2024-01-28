@@ -8,12 +8,20 @@
      $telefoon = $_POST['Telefoon'];
      $wachtwoord = $_POST['Wachtwoord'];
      
-     $sql = "INSERT INTO relaties (Naam, Email, Telefoon, Wachtwoord, FKrollenID)
-                  VALUES ('" . $naam . "', '" . 
-                               $email . "', '" .
-                               $telefoon . "', '" . 
-                               md5($wachtwoord) . "', '" . 
-                               10 . "')";
+     $key = openssl_random_pseudo_bytes(32);
+
+     $encryptNaam = openssl_encrypt($naam, "AES-128-ECB", $key);
+     $encryptEmail = openssl_encrypt($email, "AES-128-ECB", $key);
+     $encryptTelefoon = openssl_encrypt($telefoon, "AES-128-ECB", $key);
+     $encryptWachtwoord = openssl_encrypt($wachtwoord, "AES-128-ECB", $key);
+
+     $sql = "INSERT INTO relaties (Naam, Email, Telefoon, Wachtwoord, FKrollenID, SslKey)
+                  VALUES ('" . $encryptNaam . "', '" . 
+                               $encryptEmail . "', '" .
+                               $encryptTelefoon . "', '" . 
+                               $encryptWachtwoord . "', '" .
+                               10 . "', '" .
+                               $key . "')";
 
      if ($db->query($sql) == true) 
      {    if (StuurMail($email, 
