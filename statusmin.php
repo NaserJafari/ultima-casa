@@ -37,13 +37,13 @@
                               <label for="Status">Status:</label>
                               <input type="text" class="form-control" value="' . $gegevens["Status"] . '" id="Status" name="Status" readonly>
                          </div>
-                         <form action="statusdel.php" method="GET">
+                         <form action="statusdel.php" method="POST">
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="wis" name="wis" 
                                            value="' . $ID . '" title="Deze status verwijderen.">Status verwijderen
                                    </button>
                                    <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
-                                   <button class="action-button"><a href="admin.php?RID=' . $relatieid . '" >Annuleren</a>
+                                   <button class="action-button"><a href="admin.php" >Annuleren</a>
                                    </button>
                               </div>
                          </form>

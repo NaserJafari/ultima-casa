@@ -1,15 +1,16 @@
 <?php
 
      include_once("functions.php");
+     include_once("session.php");
      
      $db = ConnectDB();
      
-     $ID = $_POST["rel"];
-     $relatieid = $_POST["RID"];
+     $idSession = $_SESSION["ID"];
+     $rolSession = $_SESSION["Rol"];
      
      $sql = "SELECT Naam, Email, Telefoon, FKrollenID
                FROM relaties
-              WHERE relaties.ID = " . $ID;
+              WHERE relaties.ID = " . $idSession;
      
      $gegevens = $db->query($sql)->fetch();
      
@@ -47,7 +48,7 @@
                               <label for="Email">Email:</label>
                               <input type="text" class="form-control" value="' . $gegevens["Email"] . '" id="Email" name="Email" readonly>
                          </div>
-                         <form action="relatierolupd.php" method="GET">
+                         <form action="relatierolupd.php" method="POST">
                               <div class="form-group">
                                    <label for="Rol">Rol:</label>
                                    <select class="form-control" id="Rol" name="Rol" value="' . $gegevens["FKrollenID"] . '" required>';
@@ -63,10 +64,10 @@
                               </div>
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="upd" name="upd" 
-                                           value="' . $ID . '" title="De rol van deze relatie aanpassen.">Wijzigen
+                                           value="' . $idSession . '" title="De rol van deze relatie aanpassen.">Wijzigen
                                    </button>
-                                   <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
-                                   <button class="action-button"><a href="admin.php?RID=' . $relatieid . '" >Annuleren</a>
+                                   <input type="hidden" value="' . $rolSession . '" id="RID" name="RID">
+                                   <button class="action-button"><a href="admin.php" >Annuleren</a>
                                    </button>
                               </div>
                          </form>

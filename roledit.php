@@ -31,7 +31,7 @@
      $record = $db->query($sql)->fetch();
      
      if ($record)
-     {    echo          '<form action="rolupd.php" method="GET">
+     {    echo          '<form action="rolupd.php" method="POST">
                               <div class="form-group">
                                    <label for="Naam">Rol:</label>
                                    <input type="text" class="form-control" value = "' . $record["Naam"] . '"
@@ -58,7 +58,7 @@
                                    </button>
                                    <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
                                    <button class="action-button">
-                                        <a href="admin.php?RID=' . $relatieid . '" >Annuleren</a>
+                                        <a href="admin.php" >Annuleren</a>
                                    </button>
                               </div>
                          </form>';

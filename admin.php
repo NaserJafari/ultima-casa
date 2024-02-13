@@ -77,7 +77,7 @@
                                         <th>&nbsp;</th>
                                         <th>&nbsp;</th>
                                         <th class="button-column">
-                                             <form action="statusplus.php">                             
+                                             <form action="statusplus.php" method="post">                             
                                                   <button type="submit" class="action-button"
                                                           title="Een nieuwe status toevoegen.">&nbsp;+&nbsp;
                                                   </button>
@@ -106,7 +106,7 @@
                                         <td>' . $record['Status'] . '</td>
                                         <td>' . $record['StatusCode'] . '</td>
                                         <td class="button-column">
-                                             <form action="statusedit.php">                             
+                                             <form action="statusedit.php" method="post">                             
                                                   <button type="submit" class="action-button" id="edit" name="edit" 
                                                           value="' . $record['ID'] . '" title="Deze status wijzigen.">...
                                                   </button>
@@ -114,7 +114,7 @@
                                              </form>
                                         </td>
                                         <td class="button-column">
-                                             <form action="statusmin.php">                             
+                                             <form action="statusmin.php" method="POST">                             
                                                   <button type="submit" class="action-button" id="wis" name="wis"' . $disabled . ' 
                                                           value="' . $record['ID'] . '" title="' . $niet . '">&nbsp;-&nbsp;
                                                   </button>
@@ -183,7 +183,7 @@
                                         <th>&nbsp;</th>
                                         <th>&nbsp;</th>
                                         <th class="button-column">
-                                             <form action="rolplus.php">                             
+                                             <form action="rolplus.php" method="POST">                             
                                                   <button type="submit" class="action-button" id="plus" name="plus" 
                                                           title="Een nieuwe rol toevoegen.">&nbsp;+&nbsp;
                                                   </button>
@@ -212,7 +212,7 @@
                                         <td>' . $record['Waarde'] . '</td>
                                         <td>' . $record['Landingspagina'] . '</td>
                                         <td class="button-column">
-                                             <form action="roledit.php">                             
+                                             <form action="roledit.php" method="post">                             
                                                   <button type="submit" class="action-button" id="edit" name="edit" 
                                                           value="' . $record['ID'] . '" title="Deze rol wijzigen.">...
                                                   </button>
@@ -220,7 +220,7 @@
                                              </form>
                                         </td>
                                         <td class="button-column">
-                                             <form action="rolmin.php">                             
+                                             <form action="rolmin.php" method="post">                             
                                                   <button type="submit" class="action-button" id="wis" name="wis"' . $disabled . ' 
                                                           value="' . $record['ID'] . '" title="' . $niet . '">&nbsp;-&nbsp;
                                                   </button>
@@ -300,7 +300,7 @@
                                         <td>' . $record['Telefoon'] . '</td>                                             
                                         <td>' . $record['Omschrijving'] . '</td>                                             
                                         <td>
-                                             <form action="relatieedit.php">  
+                                             <form action="relatieedit.php" method="post">  
                                                   <button type="submit" class="action-button" id="rel" name="rel" 
                                                           value="' . $record['RID'] . '" title="De rol van dit account wijzigen.">&#x263A;
                                                   </button>

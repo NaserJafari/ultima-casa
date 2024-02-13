@@ -37,7 +37,7 @@
      }
     
      echo               '<br><br>
-                         <button class="action-button"><a href="admin.php?RID=' . $relatieID . '" >Ok</a>
+                         <button class="action-button"><a href="admin.php" >Ok</a>
                          </button>
                     </div>
                </div>

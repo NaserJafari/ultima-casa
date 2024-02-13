@@ -31,7 +31,7 @@
      $record = $db->query($sql)->fetch();
      
      if ($record)
-     {    echo          ' <form action="statusupd.php" method="GET">
+     {    echo          ' <form action="statusupd.php" method="POST">
                               <div class="form-group">
                                    <label for="StatusCode">Statuscode:</label>
                                    <input type="number" min=0 max=127 class="form-control" value = "' . $record["StatusCode"] . '"
@@ -48,14 +48,14 @@
                                    </button>
                                    <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
                                    <button class="action-button">
-                                        <a href="admin.php?RID=' . $relatieid . '" >Annuleren</a>
+                                        <a href="admin.php" >Annuleren</a>
                                    </button>
                               </div>
                          </form>';
      }
      else
      {         echo     'Fout bij het ophalen van de gegevens<br><br>
-                         <button class="action-button"><a href="admin.php?RID=' . $relatieid . '" >Ok</a>
+                         <button class="action-button"><a href="admin.php" >Ok</a>
                          </button>';
      }
      echo          '</div>

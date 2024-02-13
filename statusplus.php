@@ -19,7 +19,7 @@
                <div class="container">
                     <div class="col-sm-5 col-md-7 col-lg-5 col-sm-offset-4 col-md-offset-3 col-lg-offset-4">
                          <h3>Een status toevoegen</h3>
-                         <form action="statusins.php" method="GET">
+                         <form action="statusins.php" method="POST">
                               <div class="form-group">
                                    <label for="Statuscode">Statuscode:</label>
                                    <input type="number" class="form-control" 
@@ -30,12 +30,12 @@
                                    <label for="Status">Status:</label>
                                    <input type="text" class="form-control" placeholder="Status" id="Status" name="Status" required>
                               </div>
-                              <div class="form-group">
+                              <div class="form-group" method="post">
                                    <button type="submit" class="action-button" id="RID" name="RID" 
                                            value="' . $relatieid . '" title="Status toevoegen.">Toevoegen
                                    </button>
                                    <button class="action-button">
-                                        <a href="admin.php?RID=' . $relatieid . '" >Annuleren</a>
+                                        <a href="admin.php" >Annuleren</a>
                                    </button>
                               </div>
                          </form>

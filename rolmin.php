@@ -46,13 +46,13 @@
                               <input type="text" class="form-control" value="' . $gegevens["Landingspagina"] . '" 
                                      id="Landingspagina" name="Landingspagina" readonly>
                          </div>
-                         <form action="roldel.php" method="GET">
+                         <form action="roldel.php" method="POST">
                               <div class="form-group">
                                    <button type="submit" class="action-button" id="wis" name="wis" 
                                            value="' . $ID . '" title="Deze rol verwijderen.">Rol verwijderen
                                    </button>
                                    <input type="hidden" value="' . $relatieid . '" id="RID" name="RID">
-                                   <button class="action-button"><a href="admin.php?RID=' . $relatieid . '" >Annuleren</a>
+                                   <button class="action-button"><a href="admin.php" >Annuleren</a>
                                    </button>
                               </div>
                          </form>

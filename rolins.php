@@ -37,7 +37,7 @@
      {    echo          'Fout bij het toevoegen van deze rol.<br><br>' . $sql;
      }
      echo               '<br><br>
-                         <button class="action-button"><a href="admin.php?RID=' . $relatieid . '" >Ok</a>
+                         <button class="action-button"><a href="admin.php" >Ok</a>
                          </button>
                     </div>
                </div>
